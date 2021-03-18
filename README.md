@@ -1,5 +1,7 @@
 # mortgagecalcapp
 
+In this project I practice to customize the theme
+
 A new Flutter project.
 
 ## Getting Started

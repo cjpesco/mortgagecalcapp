@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 
-const Color kPrimaryColor = Color(0xFF66bb6a);
+const Color primaryIndigo200 = Color(0xFF7e57c2);
+const Color primaryIndigoLight = Color(0xFFb085f5);
+const Color primaryIndigoDark = Color(0xFF4d2c91);
 
-const Color kPrimaryLightColor = Color(0xFF98ee99);
+const Color secondaryDeepPurple = Color(0xFF7986cb);
+const Color secondaryPurpleLight = Color(0xFFaab6fe);
+const Color secondaryPurpleDark = Color(0xFF49599a);
 
-const Color kPrimaryDarkColor = Color(0xFF338a3e);
-
-const Color kSecondaryColor = Color(0xFF26a69a);
-
-const Color kSecondaryLightColor = Color(0xFF64d8cb);
-
-const Color kSecondaryDarkColor = Color(0xFF00766c);
-
-const Color kPrimaryTextColor = Color(0xFF000000);
-
-const Color kSecondaryTextColor = Color(0xFF000000);
+const Color textOnPrimaryColor = Color(0xFFffffff);
+const Color textOnSecondaryColor = Color(0xFF000000);
+const Color secondaryBackgroundWhite = Color(0xFFc5cae9);

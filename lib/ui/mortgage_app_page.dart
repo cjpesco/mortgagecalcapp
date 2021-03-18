@@ -35,126 +35,150 @@ class _MortgageAppPageState extends State<MortgageAppPage> {
               ),
             ),
           ),
-          Card(
-            child: Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(12)),
-              child: Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Column(
-                  children: <Widget>[
-                    TextField(
-                      keyboardType:
-                          TextInputType.numberWithOptions(decimal: true),
-                      //TODO: theme this!
-                      decoration: InputDecoration(
-                          prefixText: "Home Price",
-                          prefixIcon: Icon(Icons.home)),
-                      onChanged: (String value) {
-                        try {
-                          _homePrice = double.parse(value);
-                        } catch (exception) {
-                          _homePrice = 0.0;
-                        }
-                      }, //TODO: theme this!
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text("Length of Loan (years)"), //TODO: Theme this!
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            decoration: BoxDecoration(
+                color: Colors.transparent,
+                border: Border.all(
+                  color: secondaryDeepPurple,
+                  style: BorderStyle.solid,
+                ),
+                borderRadius: BorderRadius.circular(12)),
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    //TODO: theme this!
+                    decoration: InputDecoration(
+                        hintText: 'Enter Home Price',
+                        //    prefixText: "Home Price",
+                        prefixIcon: Icon(
+                          Icons.home,
+                          color: Colors.black,
+                        )),
+                    onChanged: (String value) {
+                      try {
+                        _homePrice = double.parse(value);
+                      } catch (exception) {
+                        _homePrice = 0.0;
+                      }
+                    }, //TODO: theme this!
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("Length of Loan (years)"), //TODO: Theme this!
 
-                        Row(
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  if (_lengthOfLoan > 0) {
-                                    _lengthOfLoan -= 5;
-                                  } else {
-                                    // do nothing
-                                  }
-                                });
-                              },
-                              child: Container(
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (_lengthOfLoan > 0) {
+                                  _lengthOfLoan -= 5;
+                                } else {
+                                  // do nothing
+                                }
+                              });
+                            },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              margin: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: secondaryPurpleDark,
+
+                                //   color: Colors.blueGrey.withOpacity(0.2)
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "-",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: secondaryBackgroundWhite,
+                                  ),
+                                ),
+                              ), //TODO: Style Theme it!
+                            ),
+                          ),
+                          Text("$_lengthOfLoan"), //TODO: Style Theme it!
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _lengthOfLoan += 5;
+                              });
+                            },
+                            child: Container(
                                 width: 40,
                                 height: 40,
                                 margin: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Colors.blueGrey.withOpacity(0.2)),
+                                    color: secondaryPurpleDark,
+                                    borderRadius: BorderRadius.circular(16)),
                                 child: Center(
-                                    child: Text("-")), //TODO: Style Theme it!
-                              ),
-                            ),
-                            Text("$_lengthOfLoan"), //TODO: Style Theme it!
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _lengthOfLoan += 5;
-                                });
-                              },
-                              child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  margin: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blueGrey.withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(16)),
-                                  child: Center(
-                                      child: Text("+")) //TODO: theme this!
-
+                                  child: Text(
+                                    "+",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: secondaryBackgroundWhite,
+                                    ),
                                   ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
+                                ) //TODO: theme this!
 
-                    //Interest
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text("Interest"), ////TODO: theme this!
-                        Padding(
-                            padding: EdgeInsets.all(18),
-                            child: Text("${_interest.toStringAsFixed(2)} %"))
-                      ],
-                    ),
+                                ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
 
-                    //Slider
-                    Column(
-                      children: <Widget>[
-                        SliderTheme(
-                          data: SliderTheme.of(context).copyWith(
-                            inactiveTrackColor: Color(0xFF8D8E98),
-                            activeTrackColor: Colors.white,
-                            thumbColor: Colors.greenAccent.shade700,
-                            overlayColor: Color(0x2998ee99),
-                            thumbShape: RoundSliderThumbShape(
-                              enabledThumbRadius: 10.0,
-                            ),
-                            overlayShape: RoundSliderOverlayShape(
-                              overlayRadius: 20.0,
-                            ),
+                  //Interest
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("Interest"), ////TODO: theme this!
+                      Padding(
+                          padding: EdgeInsets.all(18),
+                          child: Text("${_interest.toStringAsFixed(2)} %"))
+                    ],
+                  ),
+
+                  //Slider
+                  Column(
+                    children: <Widget>[
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          inactiveTrackColor: Colors.white,
+                          activeTrackColor: Color(0xFF49599a),
+                          thumbColor: Color(0xFF7986cb),
+                          //overlayColor: Color(0x29b085f5),
+                          overlayColor: Color(0x35ffffff),
+                          thumbShape: RoundSliderThumbShape(
+                            enabledThumbRadius: 10.0,
                           ),
-                          child: Slider(
-                              min: 0.0,
-                              max: 10.0,
+                          overlayShape: RoundSliderOverlayShape(
+                            overlayRadius: 20.0,
+                          ),
+                        ),
+                        child: Slider(
+                            min: 0.0,
+                            max: 10.0,
 
-                              // divisions: 10,
-                              value: _interest,
-                              onChanged: (double newValue) {
-                                setState(() {
-                                  _interest = newValue;
-                                });
-                              }),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                            // divisions: 10,
+                            value: _interest,
+                            onChanged: (double newValue) {
+                              setState(() {
+                                _interest = newValue;
+                              });
+                            }),
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
           )

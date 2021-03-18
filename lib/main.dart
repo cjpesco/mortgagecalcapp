@@ -3,48 +3,40 @@ import 'package:mortgagecalcapp/util/colors.dart';
 
 import 'ui/mortgage_app.dart';
 
-final ThemeData _appTheme = _buildAppTheme();
+final ThemeData _mortgageTheme = _buildMortgageTheme();
 
-ThemeData _buildAppTheme() {
+ThemeData _buildMortgageTheme() {
   final ThemeData base = ThemeData.dark();
 
   return base.copyWith(
-    brightness: Brightness.dark,
-    accentColor: kSecondaryDarkColor,
-    primaryColor: kPrimaryColor,
-    buttonColor: kSecondaryColor,
-    scaffoldBackgroundColor: kPrimaryDarkColor,
-    cardColor: kSecondaryDarkColor,
-    textTheme: _appTextTheme(base.textTheme),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.blueGrey,
+    accentColor: primaryIndigoDark,
+    primaryColor: primaryIndigo200,
+    scaffoldBackgroundColor: secondaryBackgroundWhite,
+    hintColor: textOnSecondaryColor,
+    cardColor: secondaryDeepPurple,
+    textTheme: _buildMortgageTextTheme(base.textTheme),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.purple.shade400,
+        ),
+        borderRadius: BorderRadius.circular(12),
       ),
+    ),
+    floatingActionButtonTheme: base.floatingActionButtonTheme.copyWith(
+      elevation: 7,
+      splashColor: primaryIndigoLight,
+      backgroundColor: secondaryDeepPurple,
     ),
   );
 }
 
-TextTheme _appTextTheme(TextTheme base) {
+TextTheme _buildMortgageTextTheme(TextTheme base) {
   return base
       .copyWith(
-        headline5: base.headline5.copyWith(
-          fontWeight: FontWeight.w500,
-        ),
-        headline6: base.headline6.copyWith(
-          fontSize: 18.0,
-        ),
-        caption: base.caption.copyWith(
-          fontWeight: FontWeight.w400,
-          fontSize: 14.0,
-        ),
-        bodyText2: base.bodyText2.copyWith(
-          // fontFamily: 'Lobster',
+        bodyText2: TextStyle(
+          color: textOnSecondaryColor,
           fontSize: 16,
-          color: Colors.white,
-        ),
-        button: base.button.copyWith(
-          // fontFamily: 'Lobster',
-          letterSpacing: 3.0,
         ),
       )
       .apply(
@@ -54,7 +46,7 @@ TextTheme _appTextTheme(TextTheme base) {
 
 void main() => runApp(
       MaterialApp(
+        theme: _mortgageTheme,
         home: MortgageApp(),
-        theme: _appTheme,
       ),
     );
